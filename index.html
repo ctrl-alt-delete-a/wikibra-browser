@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>🌍 Wikibra Browser</title>
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="profil.js"></script>
+  <script defer src="darkmode.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+    input, textarea {
+      width: 300px;
+      height: 30px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    button {
+      font-size: 16px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    #results { margin-top: 20px; }
+    #profile-section { display: none; margin-top: 30px; }
+    textarea { width: 80%; height: 100px; margin-top: 10px; font-size: 16px; }
+    .dark-mode {
+      background: #121212;
+      color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌍 Välkommen till Wikibra Browser!</h1>
+
+  <button onclick="toggleDarkMode()">🌓 Växla Dark Mode</button><br><br>
+
+  <input id="searchbar" type="text" placeholder="Vad letar du efter idag?"><br>
+  <div id="results"></div>
+
+  <button onclick="showProfile()">👤 Min Profil</button>
+
+  <div id="profile-section">
+    <h2>👤 Din Profil</h2>
+    <textarea id="profile-text" placeholder="Skriv något om dig själv..."></textarea><br>
+    <button onclick="saveProfile()">💾 Spara Profil</button>
+    <button onclick="hideProfile()">⬅️ Tillbaka</button>
+  </div>
+
+</body>
+</html>

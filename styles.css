@@ -1,0 +1,56 @@
+body {
+    background: #121212;
+    color: white;
+    font-family: sans-serif;
+    padding: 40px;
+  }
+  
+  input {
+    width: 400px;
+    height: 40px;
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .result {
+    margin-top: 20px;
+    padding: 20px;
+    background: #1f1f1f;
+    border-radius: 12px;
+  }
+  
+  a {
+    color: #4ecdc4;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .edit-button {
+    margin-top: 10px;
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .edit-button:hover {
+    background: #666;
+  }
+  button {
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 18px; /* 👈 Lägg till den här raden! */
+  }
+  
