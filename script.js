@@ -100,3 +100,20 @@ fetch('sitedata.json')
   .catch(error => {
     console.error('🚨 Fel vid laddning av sitedata.json:', error);
   });
+
+// --- DARK MODE ---
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('wikibra_darkmode', 'on');
+  } else {
+    localStorage.setItem('wikibra_darkmode', 'off');
+  }
+}
+
+// När sidan laddas, kolla om dark mode ska vara på
+window.addEventListener('load', () => {
+  if (localStorage.getItem('wikibra_darkmode') === 'on') {
+    document.body.classList.add('dark-mode');
+  }
+});
