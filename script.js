@@ -7,7 +7,7 @@ fetch('sitedata.json')
 
     const fuse = new Fuse(siteData, {
       keys: ['title', 'description'],
-      threshold: 0.4
+      threshold: 0.4 // Mindre snäll sökning
     });
 
     const input = document.getElementById('searchbar');
@@ -21,7 +21,7 @@ fetch('sitedata.json')
         resultsDiv.innerHTML = '';
 
         // 🔥 Filtrera bort dåliga träffar
-const filteredResults = results.filter(r => r.score < 0.5);
+        const filteredResults = results.filter(r => r.score < 0.5); // Lättare sökning
 
         if (filteredResults.length === 0) {
           resultsDiv.innerHTML = `
@@ -44,7 +44,7 @@ const filteredResults = results.filter(r => r.score < 0.5);
       }
     });
 
-    function createSite() {
+    window.createSite = function() {
       const newTitle = prompt("Titel på sidan:");
       if (!newTitle) return;
 
@@ -64,17 +64,26 @@ const filteredResults = results.filter(r => r.score < 0.5);
       });
 
       alert("✅ Sidan '" + newTitle + "' skapad!");
+
       input.value = newTitle;
       input.dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));
     }
 
-    function editSite(title) {
+    window.editSite = function(title) {
       const page = siteData.find(p => p.title === title);
+      if (!page) {
+        alert("❌ Kunde inte hitta sidan.");
+        return;
+      }
+
       const newDescription = prompt("Ny beskrivning för " + title + ":", page.description);
       if (newDescription) {
         page.description = newDescription;
-        alert("✅ Uppdaterad!");
+        alert("✅ Beskrivning uppdaterad!");
         input.dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));
       }
     }
+  })
+  .catch(error => {
+    console.error('🚨 Fel vid laddning av sitedata.json:', error);
   });
