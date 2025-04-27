@@ -43,7 +43,7 @@ fetch('sitedata.json')
       }
     });
 
-    // --- NYA METODEN ---
+    // När man klickar "➕ Lägg till ny sida"
     window.createSite = function() {
       document.getElementById('new-site-form').style.display = 'block';
     }
