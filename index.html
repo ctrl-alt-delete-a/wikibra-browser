@@ -27,7 +27,7 @@
     }
     #results { margin-top: 20px; }
     #new-site-form {
-      display: none;
+      display: none; /* 👈 Viktigt! Göm från början */
       margin-top: 20px;
       padding: 20px;
       border: 2px solid #ccc;
@@ -35,6 +35,7 @@
       width: 350px;
       margin-left: auto;
       margin-right: auto;
+      background: #f8f8f8;
     }
   </style>
 </head>
@@ -45,7 +46,7 @@
   <input id="searchbar" type="text" placeholder="Vad letar du efter idag?"><br>
   <div id="results"></div>
 
-  <!-- Skapa ny sida-formulär -->
+  <!-- Skapa ny sida-formulär (gömd från början!) -->
   <div id="new-site-form">
     <h2>➕ Skapa Ny Sida</h2>
     <input id="new-title" type="text" placeholder="Titel på sidan"><br>
