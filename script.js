@@ -21,7 +21,7 @@ fetch('sitedata.json')
         resultsDiv.innerHTML = '';
 
         // 🔥 Filtrera bort dåliga träffar
-        const filteredResults = results.filter(r => r.score < 0.3);
+const filteredResults = results.filter(r => r.score < 0.5);
 
         if (filteredResults.length === 0) {
           resultsDiv.innerHTML = `
