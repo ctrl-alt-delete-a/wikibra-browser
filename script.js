@@ -7,7 +7,7 @@ fetch('sitedata.json')
 
     const fuse = new Fuse(siteData, {
       keys: ['title', 'description'],
-      threshold: 0.4 // Mindre snäll sökning
+      threshold: 0.4
     });
 
     const input = document.getElementById('searchbar');
@@ -20,8 +20,7 @@ fetch('sitedata.json')
 
         resultsDiv.innerHTML = '';
 
-        // 🔥 Filtrera bort dåliga träffar
-        const filteredResults = results.filter(r => r.score < 0.5); // Lättare sökning
+        const filteredResults = results.filter(r => r.score < 0.5);
 
         if (filteredResults.length === 0) {
           resultsDiv.innerHTML = `
@@ -44,17 +43,21 @@ fetch('sitedata.json')
       }
     });
 
+    // --- NYA METODEN ---
     window.createSite = function() {
-      const newTitle = prompt("Titel på sidan:");
-      if (!newTitle) return;
+      document.getElementById('new-site-form').style.display = 'block';
+    }
 
-      const newUrl = prompt("URL till sidan (börja med https://):");
-      if (!newUrl) return;
+    window.saveNewSite = function() {
+      const newTitle = document.getElementById('new-title').value.trim();
+      const newUrl = document.getElementById('new-url').value.trim();
+      const newDescription = document.getElementById('new-description').value.trim();
+      const newContributor = document.getElementById('new-contributor').value.trim() || "Anonym";
 
-      const newDescription = prompt("Beskrivning av sidan:");
-      if (!newDescription) return;
-
-      const newContributor = prompt("Ditt namn? 😎") || "Anonym";
+      if (!newTitle || !newUrl || !newDescription) {
+        alert("⚠️ Fyll i alla fält!");
+        return;
+      }
 
       siteData.push({
         title: newTitle,
@@ -65,8 +68,18 @@ fetch('sitedata.json')
 
       alert("✅ Sidan '" + newTitle + "' skapad!");
 
-      input.value = newTitle;
-      input.dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));
+      document.getElementById('searchbar').value = newTitle;
+      document.getElementById('searchbar').dispatchEvent(new KeyboardEvent('keydown', {'key': 'Enter'}));
+
+      cancelNewSite();
+    }
+
+    window.cancelNewSite = function() {
+      document.getElementById('new-site-form').style.display = 'none';
+      document.getElementById('new-title').value = '';
+      document.getElementById('new-url').value = '';
+      document.getElementById('new-description').value = '';
+      document.getElementById('new-contributor').value = '';
     }
 
     window.editSite = function(title) {
