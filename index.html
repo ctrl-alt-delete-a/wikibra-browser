@@ -27,7 +27,7 @@
     }
     #results { margin-top: 20px; }
     #new-site-form {
-      display: none; /* 👈 Viktigt! Göm från början */
+      display: none;
       margin-top: 20px;
       padding: 20px;
       border: 2px solid #ccc;
@@ -37,11 +37,36 @@
       margin-right: auto;
       background: #f8f8f8;
     }
+
+    /* DARK MODE */
+    .dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    .dark-mode input, .dark-mode textarea {
+      background: #1f1f1f;
+      color: #e0e0e0;
+      border: 1px solid #333;
+    }
+
+    .dark-mode button {
+      background: #2c2c2c;
+      color: #e0e0e0;
+      border: 1px solid #555;
+    }
+
+    .dark-mode #new-site-form {
+      background: #1a1a1a;
+      border-color: #333;
+    }
   </style>
 </head>
 <body>
 
   <h1>🌍 Välkommen till Wikibra Browser!</h1>
+
+  <button onclick="toggleDarkMode()">🌓 Växla Dark Mode</button><br><br>
 
   <input id="searchbar" type="text" placeholder="Vad letar du efter idag?"><br>
   <div id="results"></div>
