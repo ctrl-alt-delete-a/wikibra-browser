@@ -5,9 +5,6 @@
   <title>🌍 Wikibra Browser</title>
   <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
   <script defer src="script.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="profil.js"></script>
-  <script defer src="darkmode.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -26,13 +23,18 @@
       margin: 10px;
       padding: 10px 20px;
       cursor: pointer;
+      border-radius: 18px;
     }
     #results { margin-top: 20px; }
-    #profile-section { display: none; margin-top: 30px; }
-    textarea { width: 80%; height: 100px; margin-top: 10px; font-size: 16px; }
-    .dark-mode {
-      background: #121212;
-      color: #f0f0f0;
+    #new-site-form {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      border: 2px solid #ccc;
+      border-radius: 18px;
+      width: 350px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
@@ -40,18 +42,18 @@
 
   <h1>🌍 Välkommen till Wikibra Browser!</h1>
 
-  <button onclick="toggleDarkMode()">🌓 Växla Dark Mode</button><br><br>
-
   <input id="searchbar" type="text" placeholder="Vad letar du efter idag?"><br>
   <div id="results"></div>
 
-  <button onclick="showProfile()">👤 Min Profil</button>
-
-  <div id="profile-section">
-    <h2>👤 Din Profil</h2>
-    <textarea id="profile-text" placeholder="Skriv något om dig själv..."></textarea><br>
-    <button onclick="saveProfile()">💾 Spara Profil</button>
-    <button onclick="hideProfile()">⬅️ Tillbaka</button>
+  <!-- Skapa ny sida-formulär -->
+  <div id="new-site-form">
+    <h2>➕ Skapa Ny Sida</h2>
+    <input id="new-title" type="text" placeholder="Titel på sidan"><br>
+    <input id="new-url" type="text" placeholder="URL till sidan (https://...)"><br>
+    <input id="new-description" type="text" placeholder="Beskrivning av sidan"><br>
+    <input id="new-contributor" type="text" placeholder="Ditt namn"><br><br>
+    <button onclick="saveNewSite()">💾 Spara</button>
+    <button onclick="cancelNewSite()">❌ Avbryt</button>
   </div>
 
 </body>
